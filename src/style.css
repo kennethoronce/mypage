@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rock+Salt&family=Tangerine&display=swap");
 
 :root {
   --background: rgba(85, 214, 203, 0.85);
@@ -13,16 +14,15 @@
 body {
   margin: 0;
   background: #222;
-  font-family: "Architects Daughter", sans-serif;
 }
 
 .content {
   height: 200vh;
+  width: auto;
   background-image: url(C:\Users\Kenneth\github\mypage\src\img\cover.jpg);
-  background-color: #333;
+  background-color: rgb(77, 77, 77);
   background-blend-mode: multiply;
   background-size: cover;
-  background-repeat: no-repeat;
   display: grid;
   place-items: center;
 }
@@ -37,8 +37,18 @@ header {
   width: 100%;
 }
 
+header a {
+  text-decoration: none;
+  color: white;
+  font-family: "century gothic", sans-serif;
+}
+
 .nav-toggle {
   display: none;
+}
+
+.logo {
+  font-family: "Rock salt";
 }
 
 .nav-toggle-label {
@@ -83,7 +93,9 @@ nav {
   left: 0;
   background: var(--background);
   width: 100%;
-  display: none;
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: transform 200ms ease-in-out;
 }
 
 nav ul {
@@ -100,17 +112,77 @@ nav li {
 nav a {
   color: white;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 100ms ease-in-out;
 }
 
 nav a:hover {
   color: #000;
-  text-decoration: none;
-  font-size: 1.2rem;
-  text-transform: uppercase;
 }
 
 .nav-toggle:checked ~ nav {
-  display: block;
+  transform: scale(1, 1);
+}
+
+.nav-toggle:checked ~ nav a {
+  opacity: 1;
+  transition: opacity 150ms ease-in-out 150ms;
+}
+
+@media screen and (min-width: 800px) {
+  .nav-toggle-label {
+    display: none;
+  }
+
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+  }
+
+  .logo {
+    grid-column: 2/3;
+  }
+
+  nav {
+    all: unset;
+    grid-column: 3/4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  nav ul {
+    display: flex;
+  }
+
+  nav li {
+    margin-left: 2em;
+    margin-bottom: 0;
+  }
+
+  nav a {
+    opacity: 1;
+    position: relative;
+  }
+
+  nav a::before {
+    content: "";
+    display: block;
+    height: 1px;
+    background: white;
+    position: absolute;
+    bottom: -0.2em;
+    left: 0;
+    right: 0;
+    transform: scale(0, 1);
+    transition: transform ease-in-out 250ms;
+  }
+
+  nav a:hover::before {
+    transform: scale(1, 1);
+    transition: transform ease-in-out 250ms;
+    background: black;
+  }
 }

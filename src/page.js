@@ -4,8 +4,10 @@ function Page() {
   return (
     <div className="Page">
       <header>
-        <h1 class="logo">KENNETH ORONCE</h1>
-        <input type="checkbox" id="nav-toggle" class="nav-toggle"></input>
+        <a href="#" className="logo">
+          <h1>Keronobi</h1>
+        </a>
+        <input type="checkbox" id="nav-toggle" className="nav-toggle"></input>
         <nav>
           <ul>
             <li>
@@ -15,18 +17,21 @@ function Page() {
               <a href="#">About</a>
             </li>
             <li>
-              <a href="#">Blog</a>
+              <a href="#">Skills</a>
+            </li>
+            <li>
+              <a href="#">Experiments</a>
             </li>
             <li>
               <a href="#">Contact</a>
             </li>
           </ul>
         </nav>
-        <label for="nav-toggle" class="nav-toggle-label">
+        <label htmlFor="nav-toggle" className="nav-toggle-label">
           <span></span>
         </label>
       </header>
-      <div class="content"></div>
+      <div className="content"></div>
     </div>
   );
 }
